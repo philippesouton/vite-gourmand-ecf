@@ -1,0 +1,35 @@
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE IF NOT EXISTS users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  firstName TEXT NOT NULL,
+  lastName  TEXT NOT NULL,
+  phone     TEXT NOT NULL,
+  email     TEXT NOT NULL UNIQUE,
+  address   TEXT NOT NULL,
+  passwordHash TEXT NOT NULL,
+  role TEXT NOT NULL DEFAULT 'USER',
+  createdAt TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS menus (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  theme TEXT NOT NULL,
+  diet TEXT NOT NULL,
+  minPersons INTEGER NOT NULL,
+  priceMin INTEGER NOT NULL,
+  isActive INTEGER NOT NULL DEFAULT 1,
+  createdAt TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS password_resets (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  userId INTEGER NOT NULL,
+  token TEXT NOT NULL,
+  expiresAt TEXT NOT NULL,
+  used INTEGER NOT NULL DEFAULT 0,
+  createdAt TEXT NOT NULL DEFAULT (datetime('now')),
+  FOREIGN KEY(userId) REFERENCES users(id)
+);
