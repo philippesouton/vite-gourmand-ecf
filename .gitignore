@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Environnement
+.env
+**/.env
+
+# Node
+node_modules
+**/node_modules
+
+# Base de données locale
+*.sqlite
+backend/database.sqlite
+
+# Logs
+*.log
+
+# VS Code
+.vscode
