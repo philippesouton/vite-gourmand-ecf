@@ -61,5 +61,8 @@ backend/database.sqlite
 Allow env example files (docs)
 checkout develop
 git check-ignore -v backend/.env.example
-*/.env.example
-*/.env.example
+
+.env
+.env.*
+!.env.example
+!**/.env.example
