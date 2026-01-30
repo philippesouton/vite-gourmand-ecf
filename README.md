@@ -11,11 +11,8 @@ Application web avec authentification JWT (rôles USER / EMPLOYEE / ADMIN), gest
 - `backend/` : API Node/Express + fichiers SQL
 - `js/`, `*.html`, `style.css` : front (pages + scripts)
 - `docs/` : documentation / PDF (manuel utilisateur, charte, maquettes…)
-- `sql/` : `schema.sql` + `seed.sql` (recommandé pour l’ECF)
+- `sql/` : `schema.sql` + `seed.sql` 
 
-> ⚠️ Important : `node_modules/`, `database.sqlite`, `.env` ne doivent pas être versionnés.
-
----
 
 # Installation (local)
 
