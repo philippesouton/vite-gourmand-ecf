@@ -18,3 +18,5 @@ backend/database.sqlite
 
 # VS Code
 .vscode
+
+printf "\n# macOS\n.DS_Store\n\n# SQLite local (ne pas versionner)\nbackend/database.sqlite\n*.sqlite\n*.sqlite3\n" >> .gitignore
