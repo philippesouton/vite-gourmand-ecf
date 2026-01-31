@@ -20,3 +20,49 @@ backend/database.sqlite
 .vscode
 
 printf "\n# macOS\n.DS_Store\n\n# SQLite local (ne pas versionner)\nbackend/database.sqlite\n*.sqlite\n*.sqlite3\n" >> .gitignore
+
+node_modules/
+dist/
+build/
+.env
+.env.*
+
+
+# macOS
+.DS_Store
+
+# Node / Vite
+node_modules/
+dist/
+build/
+.vite/
+coverage/
+
+# Env (ne jamais versionner)
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# SQLite local (ne pas versionner)
+*.sqlite
+*.sqlite3
+backend/database.sqlite
+
+# Allow env example files (docs)
+!**/.env.example
+
+# Allow env example files (docs)
+Allow env example files (docs)
+checkout develop
+git check-ignore -v backend/.env.example
+
+.env
+.env.*
+!.env.example
+!**/.env.example

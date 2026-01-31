@@ -1,4 +1,7 @@
+const mongoose = require("mongoose");
+
 require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
@@ -7,6 +10,9 @@ const crypto = require("crypto");
 
 const { db, initDb } = require("./db");
 const { requireAuth, requireRole } = require("./middleware/auth");
+
+const { connectMongo } = require("./mongo");
+connectMongo();
 
 initDb();
 
@@ -102,6 +108,58 @@ app.post("/api/auth/forgot", (req, res) => {
     );
   });
 });
+
+// ---------- ORDERS (NoSQL) ----------
+
+let OrderEvent;
+try {
+  OrderEvent = require("./models/OrderEvent");
+} catch {
+  OrderEvent = null;
+}
+
+app.post("/api/orders/simulate", async (req, res) => {
+  try {
+    if (!OrderEvent || mongoose.connection.readyState !== 1) {
+    return res.json({ ok: true, stored: false });
+  }
+    const { menuId, persons } = req.body || {};
+    if (!menuId || !persons) return res.status(400).json({ error: "Missing fields" });
+
+    db.get(
+      `SELECT id, theme, diet, minPersons, priceMin FROM menus WHERE id = ?`,
+      [Number(menuId)],
+      async (err, menu) => {
+        if (err) return res.status(500).json({ error: "DB error" });
+        if (!menu) return res.status(404).json({ error: "Menu not found" });
+
+        const p = Number(persons);
+        if (!Number.isFinite(p) || p < menu.minPersons) {
+          return res.status(400).json({ error: "Invalid persons" });
+        }
+        try {
+          await OrderEvent.create({
+            menuId: menu.id,
+            persons: p,
+            priceMin: menu.priceMin,
+            theme: menu.theme,
+            diet: menu.diet,
+          });
+
+          return res.json({ ok: true, stored: true });
+        } catch (e) {
+          console.warn("[mongo] store failed:", e.message);
+          return res.json({ ok: true, stored: false });
+        }
+      }
+    );
+  } catch (e) {
+    console.warn("[mongo] store failed:", e.message);
+    return res.json({ ok: true, stored: false });
+  }
+});
+
+
 
 // ---------- MENUS ----------
 

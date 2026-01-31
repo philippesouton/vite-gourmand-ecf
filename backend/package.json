@@ -9,5 +9,27 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+<<<<<<< Updated upstream
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+=======
+>>>>>>> Stashed changes
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+<<<<<<< Updated upstream
+    "sqlite3": "^5.1.7"
+=======
+    "mongoose": "^9.1.5",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+>>>>>>> Stashed changes
+  }
 }
