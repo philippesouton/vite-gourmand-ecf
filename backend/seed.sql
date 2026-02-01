@@ -15,9 +15,9 @@ DELETE FROM users;
 -- passwordHash = bcrypt (cost 10)
 
 INSERT INTO users (firstName, lastName, phone, email, address, passwordHash, role) VALUES
-('Philippe', 'Admin',    '0600000001', 'admin@vitegourmand.test',    '1 rue Admin, 75000 Paris',     '$2b$10$DSxmLPexvYA7smxvWrgF6uunvQO32EFwQ8d71RFn.az7pvmoVpOSG', 'ADMIN'),
-('Emma',     'Employe',  '0600000002', 'employee@vitegourmand.test', '2 rue Employe, 75000 Paris',   '$2b$10$HA5D/8xHgfRpQ6DfTxxJBu/gcpPU1RifAJZZioNkUx3tRwXXdO3AC', 'EMPLOYEE'),
-('Jean',     'User',     '0600000003', 'user@vitegourmand.test',     '3 rue User, 75000 Paris',      '$2b$10$TFjmSTEl96RAQyeh3iOvj.cZQqJcoQNvpE0d560/WYyfzOnW2bd.e', 'USER');
+('Philippe', 'Admin',    '0600000001', 'admin@vitegourmand.test',    '1 rue Admin, 75000 Paris',     '$2a$10$IxuwMxmw7xYiFsgpz3nm8.v9sJVClfS2P5aoRErFTk53wOXmTOBLm', 'ADMIN'),
+('Emma',     'Employe',  '0600000002', 'employee@vitegourmand.test', '2 rue Employe, 75000 Paris',   '$2a$10$MYWb/QDP5LyDRI0T3U5n7uUjhRsHYEH3hp5gCz2jNWSatqXkpPn5y', 'EMPLOYEE'),
+('Jean',     'User',     '0600000003', 'user@vitegourmand.test',     '3 rue User, 75000 Paris',      '$2a$10$PZhbQ1LHZ4y8b6sXtx7IjeZ0EHXnYnpwXKUUSedEE1IrPbbkQOnAu', 'USER');
 
 -- MENUS
 INSERT INTO menus (title, description, theme, diet, minPersons, priceMin, isActive) VALUES
