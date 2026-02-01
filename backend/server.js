@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, ".env") });
+
+
 
 const express = require("express");
 const cors = require("cors");
@@ -156,6 +159,36 @@ app.post("/api/orders/simulate", async (req, res) => {
   } catch (e) {
     console.warn("[mongo] store failed:", e.message);
     return res.json({ ok: true, stored: false });
+  }
+});
+
+// ---------- STATS (ADMIN/EMPLOYEE) ----------
+
+app.get("/api/admin/stats/orders", requireAuth, requireRole("ADMIN", "EMPLOYEE"), async (req, res) => {
+  try {
+    // Si NoSQL non dispo : on répond proprement (pas de crash)
+    if (!OrderEvent || mongoose.connection.readyState !== 1) {
+      return res.json({
+        ok: true,
+        stored: false,
+        data: { byTheme: [], byDiet: [] }
+      });
+    }
+
+    const byTheme = await OrderEvent.aggregate([
+      { $group: { _id: "$theme", count: { $sum: 1 } } },
+      { $sort: { count: -1 } }
+    ]);
+
+    const byDiet = await OrderEvent.aggregate([
+      { $group: { _id: "$diet", count: { $sum: 1 } } },
+      { $sort: { count: -1 } }
+    ]);
+
+    return res.json({ ok: true, stored: true, data: { byTheme, byDiet } });
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({ error: "Server error" });
   }
 });
 
