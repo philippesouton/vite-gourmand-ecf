@@ -1,25 +1,28 @@
 # Vite & Gourmand
 
-Application web avec front statique (HTML/CSS/JS) et API Node.js/Express.
-
-- Base relationnelle : SQLite
-- NoSQL : MongoDB (journalisation des commandes simulées + statistiques admin)
+Application web avec **front statique** (HTML/CSS/JS) + **API Node.js/Express**.  
+Stockage principal : **SQLite**.  
+Stockage optionnel : **MongoDB** (journalisation des commandes simulées + stats admin).
 
 ## Fonctionnalités
-- Authentification JWT + rôles : USER / EMPLOYEE / ADMIN
-- Menus : création + activation/désactivation (ADMIN/EMPLOYEE)
-- Catalogue public : liste + filtres + détail
-- Simulation de commande (stockée en NoSQL si MongoDB est disponible)
-- Statistiques admin (agrégation NoSQL)
+- Authentification **JWT** + rôles : `USER` / `EMPLOYEE` / `ADMIN`
+- Menus :
+  - catalogue public (liste + filtres + détail)
+  - création + activation/désactivation (ADMIN/EMPLOYEE)
+- Simulation de commande (stockée en MongoDB si disponible)
+- Statistiques admin (agrégations MongoDB si disponible)
+
+---
 
 ## Prérequis
-- Node.js + npm
-- sqlite3 (CLI)
-- MongoDB local + mongosh
+- **Node.js** (LTS recommandé) + **npm**
+- **SQLite3 CLI** (`sqlite3`)
+- (Optionnel) **MongoDB** + **mongosh**
 
 Vérifier :
 ```bash
 node -v
 npm -v
 sqlite3 -version
+# optionnel
 mongosh --eval 'db.runCommand({ ping: 1 })'
