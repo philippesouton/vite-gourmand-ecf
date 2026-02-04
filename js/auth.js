@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.01:3001/api";
+const API_BASE = "http://127.0.0.1:3001/api";
 
 
 function showMsg(id, type, text) {
@@ -54,8 +54,12 @@ if (loginForm) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("role", data.role);
         showMsg("loginMsg", "success", `Connecté (rôle: ${data.role}).`);
-        // Option: redirection
-        // window.location.href = "index.html";
+        // Redirection simple selon rôle
+        if (data.role === "ADMIN" || data.role === "EMPLOYE") {
+          window.location.href = "admin-dashboard.html";
+        } else {
+          window.location.href = "index.html";
+        }
       })
       .catch((err) => {
         showMsg("loginMsg", "danger", err.message);
@@ -148,12 +152,7 @@ if (forgotForm) {
       return;
     }
 
-    // Option A: simulation (OK pour ECF si tu expliques "email non envoyé en dev")
-    showMsg("forgotMsg", "success", "Demande envoyée (simulation). Vérifiez votre boîte mail.");
-    forgotForm.reset();
-
-    // Option B: appel API réel (si tu veux l'activer, remplace Option A par ceci)
-    /*
+  // Option A: simulation (OK pour ECF si tu expliques "email non envoyé en dev")
     fetch(`${API_BASE}/auth/forgot`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -171,6 +170,5 @@ if (forgotForm) {
       .catch((err) => {
         showMsg("forgotMsg", "danger", err.message);
       });
-    */
   });
 }

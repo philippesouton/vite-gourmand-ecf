@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profil Admin/Employé - Vite & Gourmand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="index.html">
+          <img class="brand-logo" src="assets/logo_transparent.png" alt="Logo Vite & Gourmand">
+          <span class="brand-name">Vite & Gourmand</span>
+        </a>
+        <div class="d-flex align-items-center gap-2 order-lg-3">
+          <button id="logoutBtn" class="btn btn-outline-warning btn-sm d-none" type="button">Déconnexion</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container-fluid my-4">
+    <div class="row g-4">
+      <aside class="col-12 col-lg-3 col-xl-2">
+        <div class="side-nav p-3">
+          <div class="fw-bold mb-2">Navigation</div>
+          <nav class="nav flex-column">
+            <a class="nav-link" href="admin-dashboard.html">Dashboard</a>
+            <a class="nav-link" href="admin-orders.html">Commandes</a>
+            <a class="nav-link" href="admin-menus.html">Menus</a>
+            <a class="nav-link active" href="admin-profile.html">Profil</a>
+            <a class="nav-link" href="index.html">Accueil</a>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="col-12 col-lg-9 col-xl-10">
+        <div class="section">
+          <h1 class="page-title">Profil Admin / Employé</h1>
+          <p class="page-subtitle">Vos informations de compte et permissions.</p>
+        </div>
+
+        <div id="profileMsg" class="alert d-none" role="status"></div>
+
+        <div class="card p-3">
+          <div><strong>Nom :</strong> <span id="profileName">-</span></div>
+          <div><strong>Email :</strong> <span id="profileEmail">-</span></div>
+          <div><strong>Rôle :</strong> <span id="profileRole">-</span></div>
+          <div><strong>Téléphone :</strong> <span id="profilePhone">-</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/admin-profile.js"></script>
+</body>
+</html>

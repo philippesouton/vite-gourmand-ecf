@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Charte graphique — Vite & Gourmand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #fff7ed;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --dark: #111827;
+      --accent: #c2410c;
+      --accent2: #f59e0b;
+      --surface: #ffffff;
+      --border: rgba(17,24,39,0.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      margin: 32px;
+      background: var(--surface);
+    }
+    h1, h2, h3 { color: var(--dark); margin: 0 0 8px 0; }
+    h1 { color: var(--accent); font-size: 28px; margin-bottom: 12px; }
+    h2 { margin-top: 24px; font-size: 20px; }
+    p { margin: 6px 0; }
+    .cover {
+      padding: 48px 32px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(194,65,12,0.12), rgba(245,158,11,0.10));
+    }
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .swatch {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .swatch-color {
+      height: 80px;
+    }
+    .swatch-body {
+      padding: 8px 10px;
+      font-size: 14px;
+    }
+    .type-samples {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .muted { color: var(--muted); }
+    @media print {
+      body { margin: 20mm; }
+      .cover { page-break-after: always; }
+    }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <h1>Charte graphique — Vite & Gourmand (ECF)</h1>
+    <p class="muted">Palette couleurs, typographie, et éléments visuels.</p>
+    <p><strong>Date :</strong> 03/02/2026</p>
+    <p><strong>Auteur :</strong> [Nom Prénom]</p>
+  </section>
+
+  <h2>1. Palette de couleurs</h2>
+  <div class="palette">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#c2410c"></div>
+      <div class="swatch-body"><strong>Accent</strong><br>#c2410c</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#f59e0b"></div>
+      <div class="swatch-body"><strong>Accent 2</strong><br>#f59e0b</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#111827"></div>
+      <div class="swatch-body"><strong>Dark</strong><br>#111827</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#1f2937"></div>
+      <div class="swatch-body"><strong>Text</strong><br>#1f2937</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#6b7280"></div>
+      <div class="swatch-body"><strong>Muted</strong><br>#6b7280</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#fff7ed"></div>
+      <div class="swatch-body"><strong>Background</strong><br>#fff7ed</div>
+    </div>
+  </div>
+
+  <h2>2. Typographie</h2>
+  <div class="type-samples">
+    <div><strong>Titres (H1)</strong> — Segoe UI / Arial — 28px — Bold</div>
+    <div><strong>Sous‑titres (H2)</strong> — Segoe UI / Arial — 20px — Semi‑bold</div>
+    <div><strong>Texte courant</strong> — Segoe UI / Arial — 14–16px</div>
+  </div>
+
+  <h2>3. Composants UI</h2>
+  <ul>
+    <li>Boutons principaux : fond accent (#c2410c) avec texte blanc.</li>
+    <li>Cards : fond blanc, bordure légère, arrondis.</li>
+    <li>Navbar sombre : fond #111827.</li>
+    <li>Sections : fond clair (#fff7ed) et blocs blancs.</li>
+  </ul>
+
+  <hr>
+  <p class="muted">Export PDF : ouvrir ce fichier et “Imprimer → Enregistrer en PDF”.</p>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mes commandes - Vite & Gourmand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="index.html">
+          <img class="brand-logo" src="assets/logo_transparent.png" alt="Logo Vite & Gourmand">
+          <span class="brand-name">Vite & Gourmand</span>
+        </a>
+        <div class="d-flex align-items-center gap-2 order-lg-3">
+          <a id="adminLink" class="btn btn-outline-light btn-sm d-none" href="admin-dashboard.html">Dashboard</a>
+          <button id="logoutBtn" class="btn btn-outline-warning btn-sm d-none" type="button">Déconnexion</button>
+        </div>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link active" href="user-orders.html">Mes commandes</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container my-5">
+    <div class="section">
+      <h1 class="page-title">Mes commandes</h1>
+      <p class="page-subtitle">Suivi, modifications et avis depuis votre espace.</p>
+    </div>
+
+    <div id="ordersMsg" class="alert d-none" role="status"></div>
+
+    <div class="card p-3 mb-4">
+      <h2 class="h6 mb-2">Liste</h2>
+      <div id="ordersList">Chargement…</div>
+    </div>
+
+    <div class="card p-3 mb-4">
+      <h2 class="h6 mb-2">Mes informations</h2>
+      <form id="profileForm" class="row g-2">
+        <div class="col-md-4">
+          <label class="form-label" for="profileFirstName">Prénom</label>
+          <input id="profileFirstName" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="profileLastName">Nom</label>
+          <input id="profileLastName" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="profilePhone">GSM</label>
+          <input id="profilePhone" class="form-control">
+        </div>
+        <div class="col-12">
+          <label class="form-label" for="profileAddress">Adresse</label>
+          <input id="profileAddress" class="form-control">
+        </div>
+        <div id="profileMsg" class="alert d-none mt-2" role="status"></div>
+        <div class="col-12">
+          <button class="btn btn-outline-primary" type="submit">Mettre à jour</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card p-3 mb-4">
+      <h2 class="h6 mb-2">Détail & modification</h2>
+      <div id="orderDetail" class="text-muted">Sélectionne une commande.</div>
+
+      <form id="orderEditForm" class="mt-3 d-none">
+        <input type="hidden" id="editNumero">
+        <div class="row g-2">
+          <div class="col-md-4">
+            <label class="form-label" for="editPersons">Personnes</label>
+            <input id="editPersons" type="number" min="1" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="editDate">Date prestation</label>
+            <input id="editDate" type="date" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="editHeure">Heure livraison</label>
+            <input id="editHeure" type="time" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="editAdresse">Adresse</label>
+            <input id="editAdresse" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="editVille">Ville</label>
+            <input id="editVille" class="form-control" required>
+          </div>
+          <div class="col-md-2">
+            <label class="form-label" for="editCP">Code postal</label>
+            <input id="editCP" class="form-control">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="editDistance">Distance (km)</label>
+            <input id="editDistance" type="number" min="0" step="0.1" class="form-control">
+          </div>
+          <div class="col-md-4 d-flex align-items-end">
+            <div class="form-check">
+              <input id="editMateriel" class="form-check-input" type="checkbox">
+              <label class="form-check-label" for="editMateriel">Matériel prêté</label>
+            </div>
+          </div>
+        </div>
+        <div id="editMsg" class="alert d-none mt-2" role="status"></div>
+        <button class="btn btn-primary mt-2" type="submit">Enregistrer</button>
+      </form>
+    </div>
+
+    <div class="card p-3">
+      <h2 class="h6 mb-2">Laisser un avis</h2>
+      <form id="reviewForm" class="d-none">
+        <input type="hidden" id="reviewNumero">
+        <div class="row g-2">
+          <div class="col-md-3">
+            <label class="form-label" for="reviewNote">Note</label>
+            <select id="reviewNote" class="form-select">
+              <option value="5">5</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+            </select>
+          </div>
+          <div class="col-md-9">
+            <label class="form-label" for="reviewComment">Commentaire</label>
+            <input id="reviewComment" class="form-control">
+          </div>
+        </div>
+        <div id="reviewMsg" class="alert d-none mt-2" role="status"></div>
+        <button class="btn btn-success mt-2" type="submit">Envoyer l’avis</button>
+      </form>
+      <div id="reviewHint" class="text-muted">Sélectionne une commande terminée sans avis.</div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container py-4">
+      <div class="row g-3 align-items-start">
+        <div class="col-12 col-md-6">
+          <h2 class="h5 mb-2">Horaires</h2>
+          <p id="hoursText" class="mb-0">Lundi au Dimanche : 8h - 20h</p>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <h2 class="h5 mb-2">Informations</h2>
+          <a href="mentions-legales.html" class="text-decoration-none me-3">Mentions légales</a>
+          <a href="cgv.html" class="text-decoration-none">CGV</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/user-orders.js"></script>
+  <script src="js/hours.js"></script>
+  <script type="module" src="js/ui-auth.js"></script>
+</body>
+</html>

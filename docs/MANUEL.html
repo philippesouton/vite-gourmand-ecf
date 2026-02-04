@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Manuel utilisateur — Vite & Gourmand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #fff7ed;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --dark: #111827;
+      --accent: #c2410c;
+      --accent2: #f59e0b;
+      --surface: #ffffff;
+      --border: rgba(17,24,39,0.10);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      margin: 32px;
+      background: var(--surface);
+    }
+    h1, h2, h3 {
+      color: var(--dark);
+      margin: 0 0 8px 0;
+    }
+    h1 {
+      color: var(--accent);
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    h2 {
+      margin-top: 28px;
+      font-size: 20px;
+    }
+    h3 {
+      margin-top: 16px;
+      font-size: 16px;
+    }
+    p {
+      margin: 6px 0;
+    }
+    ul, ol {
+      margin: 6px 0 12px 20px;
+    }
+    code {
+      background: #f3f4f6;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+    .muted {
+      color: var(--muted);
+    }
+    .cover {
+      padding: 48px 32px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(194,65,12,0.12), rgba(245,158,11,0.10));
+    }
+    .cover-title {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    .cover-subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .cover-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      font-size: 14px;
+    }
+    .toc {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+    }
+    .toc ul {
+      margin: 8px 0 0 18px;
+    }
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+    }
+    @media print {
+      body { margin: 20mm; }
+      .cover { page-break-after: always; }
+    }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <h1 class="cover-title">Manuel utilisateur — Vite & Gourmand (ECF)</h1>
+    <p class="cover-subtitle">Documentation d’utilisation</p>
+    <div class="cover-meta">
+      <div><strong>Projet :</strong> Vite & Gourmand</div>
+      <div><strong>Type :</strong> Application web</div>
+      <div><strong>Établissement :</strong> Studi (ECF)</div>
+      <div><strong>Date :</strong> 19/02/2026</div>
+      <div><strong>Auteur :</strong> [Philippe SOUTON]</div>
+    </div>
+  </section>
+
+  <section class="page-break"></section>
+
+  <h2>Sommaire</h2>
+  <div class="toc" id="toc">
+    <p class="muted">Sommaire automatique…</p>
+  </div>
+
+  <section class="page-break"></section>
+
+  <h2>1. Présentation</h2>
+  <p>Vite & Gourmand est une application web permettant de consulter les menus, commander un menu et gérer les commandes selon les rôles (Utilisateur, Employé, Administrateur).</p>
+
+  <h2>2. Accès à l’application</h2>
+  <ul>
+    <li>Front : ouvrir <code>index.html</code> via un serveur statique (ex. <code>npx http-server .</code>)</li>
+    <li>API : <code>http://127.0.0.1:3001</code></li>
+  </ul>
+
+  <h2>3. Comptes de démonstration</h2>
+  <p>Ces comptes sont fournis dans le <code>seed.sql</code> :</p>
+  <ul>
+    <li>Admin : <code>admin@vite-gourmand.test</code> / <code>Admin123!</code></li>
+    <li>Employé : <code>employe@vite-gourmand.test</code> / <code>Admin123!</code></li>
+  </ul>
+  <p>Pour un compte Utilisateur, utilisez <code>register.html</code> et créez un compte.</p>
+
+  <h2>4. Parcours Visiteur</h2>
+  <h3>4.1 Accueil</h3>
+  <ul>
+    <li>Page : <code>index.html</code></li>
+    <li>Consulter la présentation de l’entreprise, les avis validés et la liste des menus.</li>
+  </ul>
+
+  <h3>4.2 Filtrer les menus</h3>
+  <p>Filtres disponibles :</p>
+  <ul>
+    <li>Thème</li>
+    <li>Régime</li>
+    <li>Nombre de personnes</li>
+    <li>Prix minimum / maximum</li>
+  </ul>
+
+  <h3>4.3 Détail d’un menu</h3>
+  <p>Cliquer “Voir le détail” pour afficher :</p>
+  <ul>
+    <li>Galerie</li>
+    <li>Plats et allergènes</li>
+    <li>Conditions</li>
+    <li>Minimum personnes et prix</li>
+  </ul>
+
+  <h3>4.4 Contact</h3>
+  <p>Page : <code>contact.html</code></p>
+  <p>Formulaire avec titre, description, email.</p>
+
+  <h2>5. Parcours Utilisateur</h2>
+  <h3>5.1 Création de compte</h3>
+  <p>Page : <code>register.html</code></p>
+  <p>Champs obligatoires : nom, prénom, GSM, adresse, email, mot de passe fort.</p>
+
+  <h3>5.2 Connexion</h3>
+  <p>Page : <code>login.html</code></p>
+  <p>Saisir email + mot de passe.</p>
+
+  <h3>5.3 Commander un menu</h3>
+  <p>Depuis la fiche menu, cliquer “Commander”.</p>
+  <p>Page : <code>order.html</code></p>
+  <ul>
+    <li>Infos client pré-remplies</li>
+    <li>Calcul automatique du prix (réduction + livraison)</li>
+    <li>Validation et enregistrement</li>
+  </ul>
+
+  <h3>5.4 Mes commandes</h3>
+  <p>Page : <code>user-orders.html</code></p>
+  <ul>
+    <li>Liste des commandes</li>
+    <li>Détail + historique</li>
+    <li>Modification / annulation si statut <code>en_attente</code></li>
+  </ul>
+
+  <h3>5.5 Avis</h3>
+  <p>Quand la commande est “terminée”, l’utilisateur peut laisser un avis (note + commentaire).</p>
+
+  <h2>6. Parcours Employé</h2>
+  <h3>6.1 Connexion</h3>
+  <p>Utiliser le compte employé.</p>
+
+  <h3>6.2 Gestion des commandes</h3>
+  <p>Page : <code>admin-orders.html</code></p>
+  <ul>
+    <li>Filtre par statut ou client</li>
+    <li>Mise à jour des statuts</li>
+    <li>Annulation avec mode de contact + motif</li>
+    <li>Retour matériel</li>
+  </ul>
+
+  <h3>6.3 Gestion des menus</h3>
+  <p>Page : <code>admin-menus.html</code></p>
+  <ul>
+    <li>Créer / activer / désactiver un menu</li>
+    <li>Ajouter une galerie</li>
+    <li>Créer des plats + allergènes</li>
+    <li>Associer plats à un menu</li>
+    <li>Mettre à jour les horaires</li>
+  </ul>
+
+  <h3>6.4 Modération des avis</h3>
+  <p>Page : <code>admin-dashboard.html</code></p>
+  <p>Valider ou refuser les avis utilisateurs.</p>
+
+  <h2>7. Parcours Administrateur</h2>
+  <p>L’Administrateur peut tout faire comme un Employé + :</p>
+  <h3>7.1 Création d’un compte employé</h3>
+  <p>Page : <code>admin-dashboard.html</code></p>
+  <ul>
+    <li>Saisir email, nom, prénom, téléphone, mot de passe</li>
+    <li>Le mot de passe est communiqué à l’employé hors application</li>
+  </ul>
+
+  <h3>7.2 Désactivation d’un employé</h3>
+  <p>Page : <code>admin-dashboard.html</code></p>
+  <p>Bouton “Désactiver / Activer”.</p>
+
+  <h3>7.3 Statistiques (NoSQL)</h3>
+  <p>Page : <code>admin-dashboard.html</code></p>
+  <ul>
+    <li>Graphique commandes par menu</li>
+    <li>Filtre par menu et période</li>
+    <li>Source MongoDB si disponible (sinon fallback Postgres)</li>
+  </ul>
+
+  <h2>8. Réinitialisation mot de passe</h2>
+  <ol>
+    <li>Page : <code>forgot-password.html</code></li>
+    <li>Récupérer le lien de reset depuis les logs (stub email)</li>
+    <li>Page : <code>reset-password.html?token=...</code></li>
+  </ol>
+
+  <h2>9. Notes techniques (dev)</h2>
+  <ul>
+    <li>Les emails sont simulés (table <code>email_log</code> + console).</li>
+    <li>MongoDB est optionnel : si non disponible, les stats utilisent Postgres.</li>
+  </ul>
+
+  <hr>
+  <p class="muted">Pour générer le PDF : ouvrir ce fichier dans le navigateur puis “Imprimer” → “Enregistrer en PDF”.</p>
+
+  <script>
+    (function buildToc() {
+      const toc = document.getElementById("toc");
+      if (!toc) return;
+      const headings = Array.from(document.querySelectorAll("h2, h3"));
+      const used = new Map();
+
+      function slugify(text) {
+        let slug = text.toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .trim()
+          .replace(/\s+/g, "-");
+        const count = used.get(slug) || 0;
+        used.set(slug, count + 1);
+        if (count > 0) slug = `${slug}-${count}`;
+        return slug;
+      }
+
+      const list = document.createElement("ul");
+      headings.forEach((h) => {
+        if (!h.id) h.id = slugify(h.textContent);
+        const li = document.createElement("li");
+        if (h.tagName === "H3") li.style.marginLeft = "12px";
+        const a = document.createElement("a");
+        a.href = `#${h.id}`;
+        a.textContent = h.textContent;
+        a.style.color = "inherit";
+        a.style.textDecoration = "none";
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+      toc.innerHTML = "";
+      toc.appendChild(list);
+    })();
+  </script>
+</body>
+</html>

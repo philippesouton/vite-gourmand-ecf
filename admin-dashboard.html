@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard - Vite & Gourmand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="index.html">
+          <img class="brand-logo" src="assets/logo_transparent.png" alt="Logo Vite & Gourmand">
+          <span class="brand-name">Vite & Gourmand</span>
+        </a>
+        <div class="d-flex align-items-center gap-2 order-lg-3">
+          <button id="logoutBtn" class="btn btn-outline-warning btn-sm d-none" type="button">Déconnexion</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container-fluid my-4">
+    <div class="row g-4">
+      <aside class="col-12 col-lg-3 col-xl-2">
+        <div class="side-nav p-3">
+          <div class="fw-bold mb-2">Navigation</div>
+          <nav class="nav flex-column">
+            <a class="nav-link active" href="admin-dashboard.html">Dashboard</a>
+            <a class="nav-link" href="admin-orders.html">Commandes</a>
+            <a class="nav-link" href="admin-menus.html">Menus</a>
+            <a class="nav-link" href="admin-profile.html">Profil</a>
+            <a class="nav-link" href="index.html">Accueil</a>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="col-12 col-lg-9 col-xl-10">
+        <div class="section">
+          <h1 class="page-title">Dashboard Admin / Employé</h1>
+          <p class="page-subtitle">Pilotez les employés, avis et statistiques en un coup d’œil.</p>
+        </div>
+
+        <div id="adminOnly" class="card p-3 mb-4 d-none">
+          <h2 class="h6">Gestion employés</h2>
+          <form id="employeeForm" class="row g-2">
+            <div class="col-md-4">
+              <input id="empEmail" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="col-md-3">
+              <input id="empFirstName" class="form-control" placeholder="Prénom" required>
+            </div>
+            <div class="col-md-3">
+              <input id="empLastName" class="form-control" placeholder="Nom" required>
+            </div>
+            <div class="col-md-2">
+              <input id="empPhone" class="form-control" placeholder="Téléphone">
+            </div>
+            <div class="col-md-4">
+              <input id="empPassword" type="password" class="form-control" placeholder="Mot de passe (admin)" required>
+            </div>
+            <div class="col-12">
+              <div id="employeeMsg" class="alert d-none" role="status"></div>
+              <button class="btn btn-primary" type="submit">Créer un employé</button>
+            </div>
+          </form>
+
+          <div class="mt-3">
+            <div class="fw-semibold mb-2">Liste employés</div>
+            <div id="employeeList" class="text-muted">Chargement…</div>
+          </div>
+        </div>
+
+        <div class="card p-3 mb-4">
+          <h2 class="h6">Modération des avis</h2>
+          <div id="avisMsg" class="alert d-none" role="status"></div>
+          <div id="avisList" class="text-muted">Chargement…</div>
+        </div>
+
+        <div id="statsSection" class="card p-3 mb-4 d-none">
+          <h2 class="h6">Stats commandes par menu</h2>
+          <div class="row g-2 mb-2">
+            <div class="col-md-4">
+              <label class="form-label" for="statsMenu">Menu (optionnel)</label>
+              <select id="statsMenu" class="form-select">
+                <option value="">Tous</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label" for="statsFrom">Du</label>
+              <input id="statsFrom" type="date" class="form-control">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label" for="statsTo">Au</label>
+              <input id="statsTo" type="date" class="form-control">
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+              <button id="statsFilterBtn" class="btn btn-outline-primary w-100" type="button">Filtrer</button>
+            </div>
+          </div>
+          <div id="statsSource" class="text-muted mb-2"></div>
+          <div id="statsList">Chargement…</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/admin-dashboard.js"></script>
+</body>
+</html>

@@ -18,10 +18,13 @@
 <body>
 
     <!-- En-tête du site -->
-<header>
+<header class="site-header">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Vite & Gourmand</a>
+      <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="index.html">
+        <img class="brand-logo" src="assets/logo_transparent.png" alt="Logo Vite & Gourmand">
+        <span class="brand-name">Vite & Gourmand</span>
+      </a>
 
       <!-- Bouton burger (mobile) -->
       <button class="navbar-toggler" type="button"
@@ -33,9 +36,9 @@
       <!-- Contenu du menu (se replie en mobile) -->
       <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="vite et gourmand.html">Accueil</a></li>
-          <li class="nav-item"><a class="nav-link" href="vite et gourmand.html#menusSection">Menus</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="menus.html">Menus</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="nav-item"><a class="nav-link" href="login.html">Connexion</a></li>
         </ul>
       </div>
@@ -44,78 +47,90 @@
 </header>
 
 <main class="container my-5">
-  <h2>Créer un compte</h2>
-  <p class="text-muted">Les champs marqués * sont obligatoires.</p>
-
-  <form id="registerForm" class="row g-3" novalidate>
-    <div class="col-12 col-md-6">
-      <label for="firstName" class="form-label">Prénom *</label>
-      <input type="text" id="firstName" class="form-control" required>
+  <div class="auth-layout">
+    <div class="auth-media">
+      <img src="assets/gallery/menuvege.webp" alt="Menu végétarien"
+           class="w-100" style="height: 100%; min-height: 260px; object-fit: cover;">
     </div>
 
-    <div class="col-12 col-md-6">
-      <label for="lastName" class="form-label">Nom *</label>
-      <input type="text" id="lastName" class="form-control" required>
-    </div>
+    <div class="auth-card">
+      <h1 class="page-title">Créer un compte</h1>
+      <p class="page-subtitle">Les champs marqués * sont obligatoires.</p>
 
-    <div class="col-12 col-md-6">
-      <label for="phone" class="form-label">GSM *</label>
-      <input type="tel" id="phone" class="form-control" required placeholder="Ex : 0612345678">
-    </div>
+      <form id="registerForm" class="row g-3" novalidate>
+        <div class="col-12 col-md-6">
+          <label for="firstName" class="form-label">Prénom *</label>
+          <input type="text" id="firstName" class="form-control" required>
+        </div>
 
-    <div class="col-12 col-md-6">
-      <label for="email" class="form-label">Email *</label>
-      <input type="email" id="email" class="form-control" required placeholder="exemple@mail.com">
-    </div>
+        <div class="col-12 col-md-6">
+          <label for="lastName" class="form-label">Nom *</label>
+          <input type="text" id="lastName" class="form-control" required>
+        </div>
 
-    <div class="col-12">
-      <label for="address" class="form-label">Adresse postale *</label>
-      <input type="text" id="address" class="form-control" required>
-    </div>
+        <div class="col-12 col-md-6">
+          <label for="phone" class="form-label">GSM *</label>
+          <input type="tel" id="phone" class="form-control" required placeholder="Ex : 0612345678">
+        </div>
 
-    <div class="col-12 col-md-6">
-      <label for="password" class="form-label">Mot de passe *</label>
-      <input type="password" id="password" class="form-control" required aria-describedby="passwordHelp">
-      <div id="passwordHelp" class="form-text">
-        10 caractères minimum, avec au moins 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial.
-      </div>
-    </div>
+        <div class="col-12 col-md-6">
+          <label for="email" class="form-label">Email *</label>
+          <input type="email" id="email" class="form-control" required placeholder="exemple@mail.com">
+        </div>
 
-    <div class="col-12 col-md-6">
-      <label for="passwordConfirm" class="form-label">Confirmer le mot de passe *</label>
-      <input type="password" id="passwordConfirm" class="form-control" required>
-    </div>
+        <div class="col-12">
+          <label for="address" class="form-label">Adresse postale *</label>
+          <input type="text" id="address" class="form-control" required>
+        </div>
 
-    <div class="col-12">
-      <button class="btn btn-dark" type="submit">Créer mon compte</button>
-      <a class="btn btn-link" href="login.html">J’ai déjà un compte</a>
-    </div>
+        <div class="col-12 col-md-6">
+          <label for="password" class="form-label">Mot de passe *</label>
+          <input type="password" id="password" class="form-control" required aria-describedby="passwordHelp">
+          <div id="passwordHelp" class="form-text">
+            10 caractères minimum, avec au moins 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial.
+          </div>
+        </div>
 
-    <div class="col-12">
-      <div id="registerMsg" class="alert d-none" role="status"></div>
+        <div class="col-12 col-md-6">
+          <label for="passwordConfirm" class="form-label">Confirmer le mot de passe *</label>
+          <input type="password" id="passwordConfirm" class="form-control" required>
+        </div>
+
+        <div class="col-12 d-flex flex-wrap gap-2">
+          <button class="btn btn-primary" type="submit">Créer mon compte</button>
+          <a class="btn btn-link" href="login.html">J’ai déjà un compte</a>
+        </div>
+
+        <div class="col-12">
+          <div id="registerMsg" class="alert d-none" role="status"></div>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 </main>
 
 
+<footer class="site-footer">
+  <div class="container py-4">
+    <div class="row g-3 align-items-start">
+      <div class="col-12 col-md-6">
+        <h2 class="h5 mb-2">Horaires</h2>
+        <p id="hoursText" class="mb-0">Lundi au Dimanche : 8h - 20h</p>
+      </div>
 
-<footer>
-        <section class="mb-5">
-            <h2>Horaires</h2>
-            <p>Lundi au Dimanche : 8h - 20h</p>
-        </section>
-
-        <section>
-            <ul>
-                <li><a href="#">Mentions légales</a></li>
-                <li><a href="#">Conditions Générales de Vente</a></li>
-            </ul>
-        </section>
+      <div class="col-12 col-md-6">
+        <h2 class="h5 mb-2">Informations</h2>
+        <a href="mentions-legales.html" class="text-decoration-none me-3">Mentions légales</a>
+        <a href="cgv.html" class="text-decoration-none">CGV</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="js/auth.js"></script>
+<script src="js/hours.js"></script>
 
 <script type="module" src="js/redirect-if-auth.js"></script>
 
