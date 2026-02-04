@@ -1,21 +1,25 @@
-const mongoose = require("mongoose");
-
-async function connectMongo() {
-  const uri = process.env.MONGO_URI;
-  if (!uri) {
-    console.warn("[mongo] MONGO_URI manquant -> NoSQL désactivé");
-    return false;
-  }
-mongoose.set("bufferCommands", false);
-
-  try {
-    await mongoose.connect(uri, { serverSelectionTimeoutMS: 3000 });
-    console.log("[mongo] connecté");
-    return true;
-  } catch (e) {
-    console.warn("[mongo] connexion impossible -> NoSQL désactivé :", e.message);
-    return false;
-  }
+let MongoClient = null;
+try {
+  ({ MongoClient } = require("mongodb"));
+} catch (e) {
+  console.warn("MongoDB driver not installed. Stats Mongo disabled.");
 }
 
-module.exports = { connectMongo };
+let client = null;
+let cachedDb = null;
+
+async function getMongoDb() {
+  if (!MongoClient) return null;
+  const url = process.env.MONGO_URL;
+  if (!url) return null;
+
+  if (cachedDb) return cachedDb;
+
+  client = new MongoClient(url);
+  await client.connect();
+  const dbName = process.env.MONGO_DB || "vite_gourmand";
+  cachedDb = client.db(dbName);
+  return cachedDb;
+}
+
+module.exports = { getMongoDb };

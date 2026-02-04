@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Maquettes — Vite & Gourmand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #fff7ed;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --dark: #111827;
+      --accent: #c2410c;
+      --accent2: #f59e0b;
+      --surface: #ffffff;
+      --border: rgba(17,24,39,0.10);
+    }
+    body {
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      color: var(--text);
+      margin: 32px;
+      background: var(--surface);
+    }
+    h1, h2, h3 { margin: 0 0 8px 0; }
+    h1 { color: var(--accent); font-size: 28px; margin-bottom: 16px; }
+    h2 { margin-top: 28px; font-size: 20px; }
+    .page-break { page-break-after: always; break-after: page; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .frame {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+      background: #fff;
+    }
+    .frame-title {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .wire {
+      border: 2px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 10px;
+      min-height: 220px;
+      background: #f9fafb;
+    }
+    .block {
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      height: 24px;
+      margin-bottom: 8px;
+      background: #fff;
+    }
+    .block.large { height: 60px; }
+    .block.hero { height: 80px; }
+    .mock {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff7ed;
+      padding: 10px;
+      min-height: 220px;
+    }
+    .mock .nav { background:#111827; color:#fff; padding:6px 8px; border-radius:6px; margin-bottom:10px; }
+    .mock .card { background:#fff; border:1px solid var(--border); border-radius:8px; padding:8px; margin-bottom:8px; }
+    .muted { color: var(--muted); }
+    @media print {
+      body { margin: 20mm; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Maquettes — Vite & Gourmand (ECF)</h1>
+  <p class="muted">Wireframes + Mockups (3 desktop, 3 mobile).</p>
+
+  <h2>Wireframes — Desktop</h2>
+  <div class="grid">
+    <div class="frame">
+      <div class="frame-title">Accueil (desktop)</div>
+      <div class="wire">
+        <div class="block"></div>
+        <div class="block hero"></div>
+        <div class="block large"></div>
+        <div class="block large"></div>
+      </div>
+    </div>
+    <div class="frame">
+      <div class="frame-title">Liste menus (desktop)</div>
+      <div class="wire">
+        <div class="block"></div>
+        <div class="block large"></div>
+        <div class="block large"></div>
+      </div>
+    </div>
+    <div class="frame">
+      <div class="frame-title">Dashboard admin (desktop)</div>
+      <div class="wire">
+        <div class="block"></div>
+        <div class="block large"></div>
+        <div class="block large"></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Wireframes — Mobile</h2>
+  <div class="grid">
+    <div class="frame">
+      <div class="frame-title">Accueil (mobile)</div>
+      <div class="wire">
+        <div class="block"></div>
+        <div class="block hero"></div>
+        <div class="block large"></div>
+      </div>
+    </div>
+    <div class="frame">
+      <div class="frame-title">Menu détail (mobile)</div>
+      <div class="wire">
+        <div class="block"></div>
+        <div class="block large"></div>
+        <div class="block large"></div>
+      </div>
+    </div>
+    <div class="frame">
+      <div class="frame-title">Commande (mobile)</div>
+      <div class="wire">
+        <div class="block"></div>
+        <div class="block large"></div>
+        <div class="block large"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <h2>Mockups — Desktop</h2>
+  <div class="grid">
+    <div class="frame">
+      <div class="frame-title">Accueil (desktop)</div>
+      <div class="mock">
+        <div class="nav">Vite & Gourmand</div>
+        <div class="card">Hero + CTA</div>
+        <div class="card">Avis clients</div>
+        <div class="card">Menus (cartes)</div>
+      </div>
+    </div>
+    <div class="frame">
+      <div class="frame-title">Liste menus (desktop)</div>
+      <div class="mock">
+        <div class="nav">Menus</div>
+        <div class="card">Filtres</div>
+        <div class="card">Menu card</div>
+        <div class="card">Menu card</div>
+      </div>
+    </div>
+    <div class="frame">
+      <div class="frame-title">Dashboard admin (desktop)</div>
+      <div class="mock">
+        <div class="nav">Dashboard</div>
+        <div class="card">Stats + Graphique</div>
+        <div class="card">Modération avis</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Mockups — Mobile</h2>
+  <div class="grid">
+    <div class="frame">
+      <div class="frame-title">Accueil (mobile)</div>
+      <div class="mock">
+        <div class="nav">Vite & Gourmand</div>
+        <div class="card">Hero</div>
+        <div class="card">Menus</div>
+      </div>
+    </div>
+    <div class="frame">
+      <div class="frame-title">Menu détail (mobile)</div>
+      <div class="mock">
+        <div class="nav">Menu</div>
+        <div class="card">Galerie</div>
+        <div class="card">Infos + Commander</div>
+      </div>
+    </div>
+    <div class="frame">
+      <div class="frame-title">Commande (mobile)</div>
+      <div class="mock">
+        <div class="nav">Commande</div>
+        <div class="card">Formulaire</div>
+        <div class="card">Résumé prix</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <p class="muted">Export PDF : ouvrir ce fichier et “Imprimer → Enregistrer en PDF”.</p>
+</body>
+</html>

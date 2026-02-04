@@ -1,21 +1,10 @@
-const path = require("path");
-const fs = require("fs");
-const sqlite3 = require("sqlite3").verbose();
+require("dotenv").config();
+const { Pool } = require("pg");
 
-const DB_PATH = path.join(__dirname, "database.sqlite");
-const SCHEMA_PATH = path.join(__dirname, "schema.sql");
-
-const db = new sqlite3.Database(DB_PATH);
-
-function initDb() {
-  const schema = fs.readFileSync(SCHEMA_PATH, "utf-8");
-  db.exec(schema, (err) => {
-    if (err) {
-      console.error("DB init error:", err);
-      process.exit(1);
-    }
-    console.log("DB ready:", DB_PATH);
-  });
+if (!process.env.DATABASE_URL) {
+  throw new Error("DATABASE_URL missing in .env");
 }
 
-module.exports = { db, initDb };
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+
+module.exports = { pool };

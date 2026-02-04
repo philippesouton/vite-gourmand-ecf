@@ -2,6 +2,7 @@ import { isAuthenticated, hasAnyRole, logout, getRole, getToken, isTokenExpired 
 
 const adminLink = document.getElementById("adminLink");
 const logoutBtn = document.getElementById("logoutBtn");
+const ordersLink = document.getElementById("ordersLink");
 
 // Si token expiré, on logout silencieux
 const token = getToken();
@@ -12,12 +13,14 @@ if (token && isTokenExpired(token)) {
 if (isAuthenticated()) {
   if (logoutBtn) logoutBtn.classList.remove("d-none");
   if (logoutBtn) logoutBtn.addEventListener("click", () => logout());
+  if (ordersLink) ordersLink.classList.remove("d-none");
 
-  if (adminLink && hasAnyRole(["ADMIN", "EMPLOYEE"])) {
+  if (adminLink && hasAnyRole(["ADMIN", "EMPLOYE"])) {
     adminLink.classList.remove("d-none");
   }
 } else {
   // non connecté: on peut laisser adminLink caché
   if (adminLink) adminLink.classList.add("d-none");
   if (logoutBtn) logoutBtn.classList.add("d-none");
+  if (ordersLink) ordersLink.classList.add("d-none");
 }
