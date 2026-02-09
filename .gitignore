@@ -66,3 +66,6 @@ git check-ignore -v backend/.env.example
 .env.*
 !.env.example
 !**/.env.example
+
+# Allow Symfony default env (no secrets)
+!backend_symfony/.env
