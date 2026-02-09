@@ -2,24 +2,23 @@
 
 ## 1. Réflexions initiales (choix technologiques)
 - **Front** : HTML/CSS/JS (Bootstrap) pour simplicité et rapidité.
-- **Back** : Node.js + Express pour API REST claire.
+- **Back** : **Symfony (PHP)** pour un framework structuré et sécurisé.
 - **BD relationnelle** : PostgreSQL (transactions, intégrité).
 - **BD NoSQL** : MongoDB (stats commandes par menu).
-- **Auth** : JWT + bcrypt.
+- **Auth** : JWT + hashing bcrypt.
 
 ## 2. Configuration de l’environnement
 Pré-requis :
-- Node.js (LTS), npm
+- PHP 8.2+ + Composer
 - PostgreSQL
-- (Optionnel) MongoDB
+- (Optionnel) MongoDB + extension PHP MongoDB (`pecl install mongodb`)
 
-Variables d’environnement (`backend/.env`) :
+Variables d’environnement (`backend_symfony/.env.local`) :
 ```
-PORT=3001
 DATABASE_URL=postgres://USER@localhost:5432/vite_gourmand_clean
 JWT_SECRET=une_phrase_secrete
 MONGO_URL=mongodb://localhost:27017
-MONGO_DB=vite_gourmand
+MONGO_DB=vite_gourmand_clean
 ```
 
 ## 3. Modèle conceptuel de données (MCD)
@@ -81,7 +80,7 @@ flowchart TD
 sequenceDiagram
   participant U as Utilisateur
   participant F as Front
-  participant API as API Express
+  participant API as API Symfony
   participant DB as PostgreSQL
 
   U->>F: Remplit formulaire commande
@@ -97,3 +96,10 @@ Voir `docs/DEPLOYMENT.md` pour le détail.
 
 ## 7. Sécurité
 Voir `docs/SECURITE.md`.
+
+## 8. Notes d’implémentation (Symfony)
+- API dans `backend_symfony/src/Controller/`
+- Connexion PostgreSQL via `Service/Db.php` (PDO)
+- JWT via `Service/JwtService.php`
+- MongoDB via `Service/MongoService.php` (fallback Postgres si Mongo absent)
+- Emails : stub (table `email_log`)

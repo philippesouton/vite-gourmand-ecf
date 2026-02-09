@@ -1,10 +1,6 @@
-import { requireAuth, getToken } from "./security.js";
+import { getToken } from "./security.js";
 
 const API_BASE = "http://127.0.0.1:3001/api";
-
-if (!requireAuth("login.html")) {
-  throw new Error("Not authenticated");
-}
 
 const orderMsg = document.getElementById("orderMsg");
 const form = document.getElementById("orderPageForm");
@@ -12,6 +8,8 @@ const menuSelect = document.getElementById("menuId");
 const priceSummary = document.getElementById("priceSummary");
 
 let menus = [];
+const token = getToken();
+const isAuthenticated = Boolean(token);
 
 function showMsg(type, text) {
   if (!orderMsg) return;
@@ -105,7 +103,31 @@ async function refreshQuote() {
 });
 if (menuSelect) menuSelect.addEventListener("change", refreshQuote);
 
-if (form) {
+if (!isAuthenticated) {
+  showMsg("warning", "Merci de vous connecter ou de créer un compte pour commander.");
+  if (form) {
+    form.classList.add("d-none");
+  }
+  if (priceSummary) {
+    priceSummary.classList.add("d-none");
+  }
+  const ctaWrap = document.createElement("div");
+  ctaWrap.className = "d-flex flex-wrap gap-2 mt-2";
+
+  const loginCta = document.createElement("a");
+  loginCta.href = "login.html";
+  loginCta.className = "btn btn-primary btn-sm";
+  loginCta.textContent = "Se connecter";
+  ctaWrap.appendChild(loginCta);
+
+  const registerCta = document.createElement("a");
+  registerCta.href = "register.html";
+  registerCta.className = "btn btn-outline-primary btn-sm";
+  registerCta.textContent = "Créer un compte";
+  ctaWrap.appendChild(registerCta);
+
+  if (orderMsg) orderMsg.appendChild(ctaWrap);
+} else if (form) {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     showMsg("secondary", "Envoi en cours...");
@@ -138,14 +160,14 @@ if (form) {
   });
 }
 
-async function init() {
-  try {
-    await loadUser();
-    await loadMenus();
-    await refreshQuote();
-  } catch (e) {
-    showMsg("danger", e.message);
+if (!isAuthenticated) {
+  // Ne pas charger les données protégées si non connecté
+  if (priceSummary) {
+    priceSummary.textContent = "Connectez-vous pour voir le devis et valider la commande.";
   }
+} else {
+  loadUser().catch((e) => showMsg("danger", e.message));
+  loadMenus()
+    .then(refreshQuote)
+    .catch((e) => showMsg("danger", e.message));
 }
-
-init();
