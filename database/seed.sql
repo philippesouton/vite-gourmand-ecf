@@ -76,10 +76,10 @@ WHERE m.titre='Vegan Festival'
   AND NOT EXISTS (SELECT 1 FROM menu_image mi WHERE mi.menu_id=m.menu_id AND mi.url='assets/gallery/dessert.webp');
 
 INSERT INTO menu_image (menu_id, url, alt)
-SELECT m.menu_id, 'assets/gallery/cocktail salé.webp', 'Sans gluten'
+SELECT m.menu_id, 'assets/gallery/sansgluten.webp', 'Sans gluten'
 FROM menu m
 WHERE m.titre='Sans Gluten'
-  AND NOT EXISTS (SELECT 1 FROM menu_image mi WHERE mi.menu_id=m.menu_id AND mi.url='assets/gallery/cocktail salé.webp');
+  AND NOT EXISTS (SELECT 1 FROM menu_image mi WHERE mi.menu_id=m.menu_id AND mi.url='assets/gallery/sansgluten.webp');
 
 -- Horaires
 INSERT INTO horaire (jour, heure_ouverture, heure_fermeture) VALUES
