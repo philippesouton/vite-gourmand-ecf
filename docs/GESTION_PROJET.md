@@ -1,7 +1,7 @@
 # Documentation — Gestion de projet (ECF)
 
 ## Outil utilisé
-**Trello** (ou Notion/Jira selon le lien fourni).
+**Notion** Notion.
 
 ## Organisation
 - **Backlog** : demandes non planifiées
