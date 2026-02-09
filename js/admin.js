@@ -389,13 +389,27 @@ function renderGalleryChoices() {
 
 async function loadGalleryChoices() {
   if (!galleryChoices) return;
-  const r = await fetch(`${API_BASE}/admin/gallery-images`, { headers: authHeaders() });
-  const data = await r.json().catch(() => ([]));
-  if (!r.ok) {
-    galleryChoices.innerHTML = `<div class="text-muted">Impossible de charger la galerie.</div>`;
-    return;
+  let data = [];
+  try {
+    const r = await fetch(`${API_BASE}/admin/gallery-images`, { headers: authHeaders() });
+    data = await r.json().catch(() => ([]));
+    if (!r.ok) {
+      data = [];
+    }
+  } catch (e) {
+    data = [];
   }
-  if (data.length === 0) {
+
+  if (!Array.isArray(data) || data.length === 0) {
+    try {
+      const r = await fetch("assets/gallery/gallery.json");
+      data = await r.json().catch(() => ([]));
+    } catch (e) {
+      data = [];
+    }
+  }
+
+  if (!Array.isArray(data) || data.length === 0) {
     galleryChoices.innerHTML = `<div class="text-muted">Aucune image trouvée.</div>`;
     return;
   }
