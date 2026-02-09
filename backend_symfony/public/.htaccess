@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Determine the RewriteBase automatically and set it as environment variable.
+    # (It will be empty if the application is deployed to the root directory)
+    RewriteCond %{REQUEST_URI}::$0 ^(/.+)/(.*)::\2$
+    RewriteRule .* - [E=REWRITEBASE:%1]
+
+    # Redirect to the front controller if no physical file exists
+    RewriteCond %{ENV:REDIRECT_STATUS} =""
+    RewriteRule ^index\.php(/(.*)|$) %{ENV:REWRITEBASE}/$2 [R=301,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ %{ENV:REWRITEBASE}/index.php [L]
+</IfModule>
