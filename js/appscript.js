@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:3001/api";
+const API_BASE = "https://vite-gourmand-api-3d14e45c9fc8.herokuapp.com/api";
 
 let menus = [];
 let currentMenu = null;
