@@ -50,8 +50,8 @@ composer install
 
 ## Initialiser la base
 ```bash
-psql $DATABASE_URL -f backend/schema.sql
-psql $DATABASE_URL -f backend/seed.sql
+psql $DATABASE_URL -f database/schema.sql
+psql $DATABASE_URL -f database/seed.sql
 ```
 
 ## Lancer l’API
@@ -95,6 +95,5 @@ Dans `admin-menus.html`, cocher les images souhaitées pour un menu.
 - `docs/GESTION_PROJET.md` : gestion de projet
 - `docs/TECHNIQUE.md` : documentation technique (diagrammes inclus)
 
-## Backend legacy (Node/Express)
-Le dossier `backend/` contient l’ancien backend Express conservé en archive technique.  
+## Backend utilisé
 La version utilisée pour l’ECF est **`backend_symfony/`**.
