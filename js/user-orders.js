@@ -1,6 +1,6 @@
 import { requireAuth, getToken } from "./security.js";
 
-const API_BASE = "https://vite-gourmand-api-3d14e45c9fc8.herokuapp.com/api";
+const API_BASE = "https://vite-gourmand-api-eu-a88d7f2d4f7f.herokuapp.com/api";
 
 if (!requireAuth("login.html")) {
   throw new Error("Not authenticated");
