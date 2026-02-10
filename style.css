@@ -141,6 +141,16 @@ h1, h2, h3, h4{
   background: var(--accent2);
 }
 
+@media (max-width: 991.98px){
+  .navbar .d-flex.align-items-center.gap-2.order-lg-3{
+    display: none !important;
+  }
+
+  .navbar .navbar-toggler{
+    margin-left: auto;
+  }
+}
+
 @media (max-width: 576px){
   :root{ --nav-h: 60px; }
   .brand-logo{ height: 44px; }
@@ -386,8 +396,11 @@ h1, h2, h3, h4{
   }
   .auth-media{
     order: 1;
+    height: auto;
   }
   .auth-media img{
+    height: auto !important;
+    min-height: 0 !important;
     max-height: 220px;
   }
 }
