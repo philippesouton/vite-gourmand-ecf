@@ -25,10 +25,10 @@ psql $DATABASE_URL -f /Users/imaschool/Desktop/vite-gourmand-ecf/database/seed.s
 php -S 127.0.0.1:3001 -t public
 ```
 
-## Liens pour le correcteur (à compléter)
-- Front (Netlify) : https://fabulous-kleicha-6c3d4f.netlify.app/
-- API (Heroku EU) : https://vite-gourmand-api-eu-a88d7f2d4f7f.herokuapp.com
-- Repo GitHub : https://github.com/philippesouton/vite-gourmand-ecf
+## Liens publics de démonstration
+- Site web : https://fabulous-kleicha-6c3d4f.netlify.app/
+- API : https://vite-gourmand-api-eu-a88d7f2d4f7f.herokuapp.com
+- Code source : https://github.com/philippesouton/vite-gourmand-ecf
 
 ## Fonctionnalités
 - Authentification **JWT** + rôles : `USER` / `EMPLOYE` / `ADMIN`
@@ -140,8 +140,8 @@ Ouvrir `index.html` dans un navigateur ou utiliser un serveur statique (ex: `npx
 - `admin-profile.html` : profil admin/employé
 
 ## Galerie d’images (menus)
-Les images doivent être placées dans `assets/gallery/` (sous‑dossiers autorisés).
-Dans `admin-menus.html`, cocher les images souhaitées pour un menu.
+Les images sont placées dans `assets/gallery/` (sous‑dossiers autorisés).
+Dans `admin-menus.html`, utiliser la galerie pour associer une ou plusieurs images au menu.
 
 ## Configuration API front (prod)
 Le front utilise `API_BASE` dans les fichiers de `js/` (ex: `js/appscript.js`, `js/auth.js`, `js/order.js`, `js/user-orders.js`, `js/admin-*.js`).  
