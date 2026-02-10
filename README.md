@@ -26,9 +26,9 @@ php -S 127.0.0.1:3001 -t public
 ```
 
 ## Liens pour le correcteur (à compléter)
-- Front (Netlify) : 
-- API (Heroku) : 
-- Repo GitHub : 
+- Front (Netlify) : https://fabulous-kleicha-6c3d4f.netlify.app/
+- API (Heroku EU) : https://vite-gourmand-api-eu-a88d7f2d4f7f.herokuapp.com
+- Repo GitHub : https://github.com/philippesouton/vite-gourmand-ecf
 
 ## Fonctionnalités
 - Authentification **JWT** + rôles : `USER` / `EMPLOYE` / `ADMIN`
