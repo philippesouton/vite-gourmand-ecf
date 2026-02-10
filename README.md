@@ -29,6 +29,7 @@ php -S 127.0.0.1:3001 -t public
 - Site web : https://fabulous-kleicha-6c3d4f.netlify.app/
 - API : https://vite-gourmand-api-eu-a88d7f2d4f7f.herokuapp.com
 - Code source : https://github.com/philippesouton/vite-gourmand-ecf
+- Gestion de projet (Notion) : https://www.notion.so/Vite-Gourmand-2fd8218cbd068046b7c4d4799e98233c?source=copy_link
 
 ## Fonctionnalités
 - Authentification **JWT** + rôles : `USER` / `EMPLOYE` / `ADMIN`
