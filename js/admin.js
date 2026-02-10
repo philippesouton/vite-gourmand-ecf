@@ -214,15 +214,20 @@ async function loadPlats() {
     <table class="table table-sm">
       <thead><tr><th>ID</th><th>Nom</th><th>Type</th><th>Allergènes</th><th></th></tr></thead>
       <tbody>
-        ${data.map((p) => `
+        ${data.map((p) => {
+          const allergenesText = Array.isArray(p.allergenes)
+            ? (p.allergenes || []).map((a) => a.libelle).join(", ")
+            : (p.allergenes || "");
+          return `
           <tr>
             <td>${p.plat_id}</td>
             <td>${p.nom}</td>
             <td>${p.type}</td>
-            <td>${(p.allergenes || []).map((a) => a.libelle).join(", ")}</td>
+            <td>${allergenesText}</td>
             <td><button class="btn btn-sm btn-outline-danger" data-del="${p.plat_id}">Supprimer</button></td>
           </tr>
-        `).join("")}
+        `;
+        }).join("")}
       </tbody>
     </table>
   `;
