@@ -22,6 +22,9 @@ backend/database.sqlite
 printf "\n# macOS\n.DS_Store\n\n# SQLite local (ne pas versionner)\nbackend/database.sqlite\n*.sqlite\n*.sqlite3\n" >> .gitignore
 
 node_modules/
+.DS_Store
+docs/diagram.md
+backend_old_2026_02_02/
 dist/
 build/
 .env
