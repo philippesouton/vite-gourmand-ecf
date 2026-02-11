@@ -149,14 +149,14 @@ Le front utilise `API_BASE` dans les fichiers de `js/` (ex: `js/appscript.js`, `
 En production, remplacer `http://127.0.0.1:3001/api` par l’URL Heroku (ex: `https://<app>.herokuapp.com/api`).
 
 ## Documentation
-- `docs/DEPLOYMENT.md` / `docs/DEPLOYMENT.pdf` : déploiement
-- `docs/SECURITE.md` / `docs/SECURITE.pdf` : sécurité
-- `docs/MANUEL.md` / `docs/Manuel utilisateur .pdf` : manuel utilisateur
+- `docs/DEPLOYMENT.pdf` : déploiement
+- `docs/SECURITE.pdf` : sécurité
+- `docs/Manuel utilisateur .pdf` : manuel utilisateur
 - `docs/Charte Graphique .pdf` : charte graphique
 - `docs/vite_gourmand_wireframes_mockups.pdf` : maquettes desktop
 - `docs/vite_gourmand_mobile_wireframes_mockups_ios_android.pdf` : maquettes mobile
 - `docs/gestion de projet.pdf` : gestion de projet
-- `docs/TECHNIQUE.md` / `docs/TECHNIQUE.pdf` : documentation technique (diagrammes inclus)
+- `docs/TECHNIQUE.pdf` : documentation technique (diagrammes inclus)
 
 ## Backend utilisé
 La version utilisée pour l’ECF est **`backend_symfony/`**.
